@@ -1,0 +1,10 @@
+
+    var client = new memcache.Client(11211, "localhost");
+    client.connect();
+
+    client.get("sessions/"+cookieManager.get("PHPSESSID"), function(error, result){
+        console.log("error : "+error);
+        if(typeof(error)==="undefined"){
+            var session = JSON.parse(result);
+        }
+    });
